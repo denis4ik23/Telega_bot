@@ -1,7 +1,12 @@
 package ru.denis4ik23bot.core;
 
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
+import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
+import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+
+import static ru.denis4ik23bot.constant.VarConst.START;
+
 //создаем ядро бота
 public class CoreBot extends TelegramLongPollingBot {
     //метод возвращает username который указали при регистрации
@@ -17,6 +22,24 @@ public class CoreBot extends TelegramLongPollingBot {
     //обрабатывает сообщения от пользователя и отвечать
     @Override
     public void onUpdateReceived(Update update) {
-        System.out.println("test");
+        //если это сообщение
+        if(update.hasMessage() && update.getMessage().hasText()){
+            //обрабатываем команды
+            switch (update.getMessage().getText()){
+                case START:
+                    SendMessage sendMessage = new SendMessage();
+                    sendMessage.setChatId(String.valueOf(update.getMessage().getChatId()));//приводим Long к String
+                    sendMessage.setText("test");
+                    try {
+                        execute(sendMessage);//отправить сообщение
+                    } catch (TelegramApiException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+
+            }
+
+        }
+        //System.out.println("test hello");
     }
 }
