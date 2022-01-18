@@ -19,7 +19,7 @@ public class CoreBot extends TelegramLongPollingBot {
     public String getBotToken() {
         return "5038609304:AAE13S9XauNgaEWY9Am6DU2rgk00jSjrJ1A";//токен
     }
-    //обрабатывает сообщения от пользователя и отвечать
+    //обрабатывает сообщения от пользователя и отвечает
     @Override
     public void onUpdateReceived(Update update) {
         //если это сообщение
@@ -29,7 +29,7 @@ public class CoreBot extends TelegramLongPollingBot {
                 case START:
                     SendMessage sendMessage = new SendMessage();
                     sendMessage.setChatId(String.valueOf(update.getMessage().getChatId()));//приводим Long к String
-                    sendMessage.setText("test");
+                    sendMessage.setText("Test");
                     try {
                         execute(sendMessage);//отправить сообщение
                     } catch (TelegramApiException e) {
@@ -40,6 +40,6 @@ public class CoreBot extends TelegramLongPollingBot {
             }
 
         }
-        //System.out.println("test hello");
+        System.out.println("test hello");
     }
 }
