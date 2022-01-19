@@ -7,7 +7,7 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import ru.denis4ik23bot.service.SendMassageOperationService;
 
-import static ru.denis4ik23bot.constant.VarConst.START;
+import static ru.denis4ik23bot.constant.VarConst.*;
 
 //создаем ядро бота
 public class CoreBot extends TelegramLongPollingBot {
@@ -41,12 +41,22 @@ public class CoreBot extends TelegramLongPollingBot {
             //обрабатываем команды
             switch (update.getMessage().getText()){
                 case START:
+                    //start
                    executeMessage(sendMassageOperationService.createGreetingMessage(update));
                     break;
-
+                case START_BOT:
+                    //stb
+                    break;
+                case STOP_BOT:
+                    //spb
+                    break;
+                case SHOW_ME:
+                    //shm
+                    break;
             }
 
         }
+        //тест ответа телеграмма при нажатии /start
         System.out.println("test hello");
     }
 }
