@@ -1,14 +1,19 @@
 package ru.denis4ik23bot.core;
 
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
+import org.telegram.telegrambots.meta.api.methods.BotApiMethod;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+import ru.denis4ik23bot.service.SendMassageOperationService;
 
 import static ru.denis4ik23bot.constant.VarConst.START;
 
 //создаем ядро бота
 public class CoreBot extends TelegramLongPollingBot {
+
+    SendMassageOperationService sendMassageOperationService = new SendMassageOperationService();
+
     //метод возвращает username который указали при регистрации
     @Override
     public String getBotUsername() {
@@ -19,6 +24,15 @@ public class CoreBot extends TelegramLongPollingBot {
     public String getBotToken() {
         return "5038609304:AAE13S9XauNgaEWY9Am6DU2rgk00jSjrJ1A";//токен
     }
+
+    private <T extends BotApiMethod> void executeMessage(T sendMessage){
+
+        try {
+            execute(sendMessage);
+        } catch (TelegramApiException e) {
+            e.printStackTrace();
+        }
+    }
     //обрабатывает сообщения от пользователя и отвечает
     @Override
     public void onUpdateReceived(Update update) {
@@ -27,14 +41,7 @@ public class CoreBot extends TelegramLongPollingBot {
             //обрабатываем команды
             switch (update.getMessage().getText()){
                 case START:
-                    SendMessage sendMessage = new SendMessage();
-                    sendMessage.setChatId(String.valueOf(update.getMessage().getChatId()));//приводим Long к String
-                    sendMessage.setText("Test");
-                    try {
-                        execute(sendMessage);//отправить сообщение
-                    } catch (TelegramApiException e) {
-                        e.printStackTrace();
-                    }
+                   executeMessage(sendMassageOperationService.createGreetingMessage(update));
                     break;
 
             }
