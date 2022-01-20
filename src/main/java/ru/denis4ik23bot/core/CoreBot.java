@@ -46,9 +46,11 @@ public class CoreBot extends TelegramLongPollingBot {
                     break;
                 case START_BOT:
                     //stb
+                    executeMessage(sendMassageOperationService.createStartBotMessage(update));
                     break;
                 case STOP_BOT:
                     //spb
+                    executeMessage(sendMassageOperationService.createStopBotMessage(update));
                     break;
                 case SHOW_ME:
                     //shm
