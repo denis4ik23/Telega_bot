@@ -56,7 +56,6 @@ public class CoreBot extends TelegramLongPollingBot {
                     //shm
                     break;
             }
-
         }
         //тест ответа телеграмма при нажатии /start
         System.out.println("test hello");

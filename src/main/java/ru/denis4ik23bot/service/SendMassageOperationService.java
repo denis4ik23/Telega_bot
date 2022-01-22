@@ -7,10 +7,11 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMar
 import static java.util.Arrays.asList;
 import static ru.denis4ik23bot.constant.VarConst.*;
 
+
 public class SendMassageOperationService {
     // приветствие бота при команде /start
     private final String GREETING_MASSAGE = "Привет";
-    private final String START_MASSAGE = "Старт";
+    public String startMassage = ("Температура ");
     private final String STOP_MASSAGE = "Стоп";
 
     private final ButtonsService buttonsService = new ButtonsService();
@@ -25,7 +26,8 @@ public class SendMassageOperationService {
     }
 
     public SendMessage createStartBotMessage(Update update){
-        return createMassage(update, START_MASSAGE);
+
+        return createMassage(update, startMassage);
     }
 
     public SendMessage createStopBotMessage(Update update){
