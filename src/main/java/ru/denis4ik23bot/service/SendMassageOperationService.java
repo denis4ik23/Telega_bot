@@ -5,13 +5,12 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
 
 import static java.util.Arrays.asList;
-import static ru.denis4ik23bot.constant.VarConst.*;
 
+import static ru.denis4ik23bot.constant.VarConst.*;
 
 public class SendMassageOperationService {
     // приветствие бота при команде /start
     private final String GREETING_MASSAGE = "Привет";
-    public String startMassage = ("Температура ");
     private final String STOP_MASSAGE = "Стоп";
 
     private final ButtonsService buttonsService = new ButtonsService();
@@ -25,8 +24,7 @@ public class SendMassageOperationService {
         return massage;
     }
 
-    public SendMessage createStartBotMessage(Update update){
-
+    public SendMessage createStartBotMessage(Update update, String startMassage){
         return createMassage(update, startMassage);
     }
 

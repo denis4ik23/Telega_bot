@@ -4,6 +4,6 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 public class Root {
-    Main main;
-    Wind wind;
+    public Main main;
+    public Wind wind;
 }

@@ -27,6 +27,5 @@ public class ButtonsService {
         }
         keyboardRows.add(keyboardRow);
         return keyboardRows;
-
     }
 }

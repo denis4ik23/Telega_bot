@@ -5,12 +5,15 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-@AllArgsConstructor
-@Getter
-@Setter
+//используем библиотеку Lombok
+@AllArgsConstructor//аннотация для создания конструктора
+@Getter//создаем гетеры для доступа
+@Setter//создаем сетеры для записи данных библиотекой Gson
 public class Main {
-    private long temp;
-    @SerializedName("feels_like")
+    private double temp;
+    //аннотация библиотеки Gson
+    @SerializedName("feels_like")//когда названия переменных не совпадают
+    // говорим библиотеке Gson куда записать данные
     private double feelsLike;
     @SerializedName("temp_min")
     private double tempMin;
