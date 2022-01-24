@@ -11,28 +11,33 @@ import static ru.denis4ik23bot.constant.VarConst.*;
 public class SendMassageOperationService {
     // приветствие бота при команде /start
     private final String GREETING_MASSAGE = "Привет";
-    private final String STOP_MASSAGE = "Стоп";
+    private final String HELP_ME = "Мне бы кто помог";
+    private final String SETTINGS = "Сейчас как настрою";
 
     private final ButtonsService buttonsService = new ButtonsService();
 
     public SendMessage createGreetingMessage(Update update){
-        SendMessage massage = createMassage(update, GREETING_MASSAGE);
+        SendMessage massage = createMessage(update, GREETING_MASSAGE);
         ReplyKeyboardMarkup keyboardMarkup =
                 buttonsService.setButtons(buttonsService.createButtons(
-                        asList(START_BOT, STOP_BOT, SHOW_ME)));
+                        asList(WEATHER_NOW, HELP, SETTINGS_BOT)));
         massage.setReplyMarkup(keyboardMarkup);
         return massage;
     }
 
     public SendMessage createStartBotMessage(Update update, String startMassage){
-        return createMassage(update, startMassage);
+        return createMessage(update, startMassage);
     }
 
     public SendMessage createStopBotMessage(Update update){
-        return createMassage(update, STOP_MASSAGE);
+        return createMessage(update, HELP_ME);
     }
 
-    private SendMessage createMassage(Update update, String massage) {
+    public SendMessage createShowMessage(Update update){
+        return createMessage(update, SETTINGS);
+    }
+
+    private SendMessage createMessage(Update update, String massage) {
         SendMessage sendMessage = new SendMessage();
         sendMessage.setChatId(String.valueOf(update.getMessage().getChatId()));
         sendMessage.setText(massage);

@@ -6,6 +6,7 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import ru.denis4ik23bot.service.SendMassageOperationService;
+
 import static ru.denis4ik23bot.MainBot.stringRoot;
 import static ru.denis4ik23bot.constant.VarConst.*;
 
@@ -42,18 +43,20 @@ public class CoreBot extends TelegramLongPollingBot {
                     //start
                    executeMessage(sendMassageOperationService.createGreetingMessage(update));
                     break;
-                case START_BOT:
+                case WEATHER_NOW:
                     //погода сейчас
                     executeMessage(sendMassageOperationService.createStartBotMessage(
                             update, stringRoot));//stringRoot
                     break;
-                case STOP_BOT:
-                    //spb
+                case HELP:
+                    //помощь
                     executeMessage(sendMassageOperationService.createStopBotMessage(update));
                     break;
-                case SHOW_ME:
-                    //shm
+                case SETTINGS_BOT:
+                    //настройки
+                    executeMessage(sendMassageOperationService.createShowMessage(update));
                     break;
+                //default: введите название города
             }
         }
         //тест ответа телеграмма при вводе команды /start и нажатии кнопок

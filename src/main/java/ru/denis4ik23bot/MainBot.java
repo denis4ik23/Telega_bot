@@ -15,6 +15,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+
 public class MainBot {
     public static String stringWeather;//данные считанные с apiWeather в строку
     public static String stringRoot;//полученные данные погоды для вывода
@@ -45,7 +46,8 @@ public class MainBot {
                     e.printStackTrace();
                     }
             //полученные данные погоды для вывода
-            stringRoot = "Температура " + (int) (root.main.getTemp()) + "\n" +
+            stringRoot =  root.name + "\n" +
+                         "Температура " + (int) (root.main.getTemp()) + "\n" +
                          "Ощущается как " + (int) (root.main.getFeelsLike()) + "\n" +
                          "Максимальная температура " + (int) (root.main.getTempMax()) + "\n" +
                          "Минимальная температура " + (int) (root.main.getTempMin()) + "\n" +
@@ -62,9 +64,10 @@ public class MainBot {
         //System.out.println("Скорость ветра " + ((int) root.wind.getSpeed()));
     }
     //метод считывает данные по ссылке и записывает их в строку
+    //принимает в параметры назание города
     private static void readApiWeather() throws IOException {
         //полная https ссылка на api для прогноза погоды
-        String urlString = API_CALL_TEMPLATE + city + LANG_RU + TEMPERATURE_CELSIUS + API_KEY;
+        String urlString = API_CALL_TEMPLATE + city + LANG_RU + TEMPERATURE_CELSIUS + API_KEY;//city
 
         URL urlObject = new URL(urlString);//создаём объект который будет содержать ссылку
             HttpURLConnection connection = (HttpURLConnection) urlObject.openConnection();//создаём соединение, используя объект
