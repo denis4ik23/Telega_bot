@@ -24,7 +24,7 @@ public class MainBot {
     public static String city = "Санкт-Петербург";
     private static final String LANG_RU = "&lang=ru";//ввод названия города на русском
     private static final String TEMPERATURE_CELSIUS = "&units=metric";//температура в градусах цельсия
-    private static final String API_KEY = "&appid=77bafaa41ca5deb9d1c5e6e6b416d395";// ключ токен для доступа к apiWeather
+    private static final String API_KEY = "&appid= ";// ключ токен для доступа к apiWeather
 
     public static void main(String[] args) throws IOException {
         //метод считывает данные по ссылке и записывает их в строку
