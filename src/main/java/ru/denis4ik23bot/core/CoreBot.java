@@ -22,7 +22,7 @@ public class CoreBot extends TelegramLongPollingBot {
     //метод возвращает токен который дали при регистрации
     @Override
     public String getBotToken() {
-        return "5038609304:AAE13S9XauNgaEWY9Am6DU2rgk00jSjrJ1A";//токен
+        return " ";//токен
     }
 
     private <T extends BotApiMethod> void executeMessage(T sendMessage){
